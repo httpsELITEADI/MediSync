@@ -1,26 +1,47 @@
-# Use Case Diagram
-
 ```mermaid
-usecaseDiagram
-actor Patient
-actor Doctor
-actor Admin
+flowchart LR
 
-Patient --> (Register/Login)
-Patient --> (Book Appointment)
-Patient --> (View Prescriptions)
-Patient --> (Upload Medical Records)
-Patient --> (Check Symptoms)
+%% Actors
+Patient[Patient]
+Doctor[Doctor]
+Admin[Admin]
 
-Doctor --> (Login)
-Doctor --> (Manage Schedule)
-Doctor --> (View Appointments)
-Doctor --> (Write Prescription)
-Doctor --> (Access Patient Records)
+%% Patient Use Cases
+RegisterLogin(Register / Login)
+BookAppointment(Book Appointment)
+ViewPrescriptions(View Prescriptions)
+UploadRecords(Upload Medical Records)
+CheckSymptoms(Check Symptoms)
 
-Admin --> (Manage Users)
-Admin --> (Manage Doctors)
-Admin --> (System Monitoring)
+%% Doctor Use Cases
+DoctorLogin(Login)
+ManageSchedule(Manage Schedule)
+ViewAppointments(View Appointments)
+WritePrescription(Write Prescription)
+AccessRecords(Access Patient Records)
 
-(Book Appointment) --> (Appointment Calendar)
-(Check Symptoms) --> (AI Symptom Checker)
+%% Admin Use Cases
+ManageUsers(Manage Users)
+ManageDoctors(Manage Doctors)
+SystemMonitoring(System Monitoring)
+
+%% Relationships
+Patient --> RegisterLogin
+Patient --> BookAppointment
+Patient --> ViewPrescriptions
+Patient --> UploadRecords
+Patient --> CheckSymptoms
+
+Doctor --> DoctorLogin
+Doctor --> ManageSchedule
+Doctor --> ViewAppointments
+Doctor --> WritePrescription
+Doctor --> AccessRecords
+
+Admin --> ManageUsers
+Admin --> ManageDoctors
+Admin --> SystemMonitoring
+
+BookAppointment --> AppointmentCalendar(Appointment Calendar)
+CheckSymptoms --> AISymptomChecker(AI Symptom Checker)
+```
